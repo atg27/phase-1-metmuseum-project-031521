@@ -8,7 +8,7 @@ const metIArtTopicUrl ="https://collectionapi.metmuseum.org/public/collection/v1
 // truncated url for specific art piece object -Can add objectID at end
 const metIAObjectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
 
-const artContainer = document.getElementsByClassName("Image-Container")
+const artContainer = document.getElementById("art-content")
 
 
 
@@ -19,8 +19,8 @@ function getObjectIdFromSearch(url) {
     .then(function(data) {
         let objectIDArray = data.objectIDs;
         //console.log(objectIDArray)
-        //console.log(objectIDArray[Math.floor(Math.random()* objectIDArray.length)])
-        let randomlyGeneratedObjId = objectIDArray[Math.floor(Math.random()* objectIDArray.length)]
+        //console.log(objectIDArray[Math.floor(Math.random()* objectIDArray.length)+1])
+        let randomlyGeneratedObjId = objectIDArray[Math.floor(Math.random() * objectIDArray.length)+1]
         
        return fetch(metIAObjectUrl + randomlyGeneratedObjId)
         .then(res => res.json())
@@ -33,7 +33,9 @@ function getObjectIdFromSearch(url) {
             log(artPieceDate)
             log(artPieceImg)
             log(artPieceTitle)
-            renderArt(data)
+
+            
+        
         })
        //select random bunch from array
         //  
@@ -47,27 +49,14 @@ function renderArt(artPiece){
       
         let img = document.createElement('img')
         img.setAttribute('src', artPiece.primaryImageSmall)
-        img.setAttribute('class', 'display-image')
       
         let p = document.createElement('p')
         p.innerText = artPiece.title
       
-        // let btn = document.createElement('button')
-        // btn.setAttribute('class', 'like-btn')
-        // btn.setAttribute('id', toy.id)
-        // btn.innerText = "like"
-        // btn.addEventListener('click', (e) => {
-        //   console.log(e.target.dataset);
-        //   likes(e)
-        //})
-        const artContainer = document.getElementsByClassName("Image-Container")
-
-        let divCard = document.createElement('div')
-        divCard.setAttribute('class', 'card')
-        divCard.append(h2, img, p) //,btn)
-        artContainer.append(divCard)
+        artContainer.append(h2,img, p)
     
 }
+
 
 function log(input){
     console.log(input)
