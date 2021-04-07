@@ -8,23 +8,45 @@ const metIArtTopicUrl ="https://collectionapi.metmuseum.org/public/collection/v1
 // truncated url for specific art piece object -Can add objectID at end
 const metIAObjectUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
 
-//initialize variable so fetch result can be used globally
-let fetchedIdArray;
 
-const GetObjectIdFromSearch = (url => { 
+
+//funx to fetch random objectId from array + fetch selected object for display on SPA
+function getObjectIdFromSearch(url) { 
    fetch(url)
-    .then(res => res.json()) //promise to json
-    // .then(data => {
-    //    const objectToRender = data.objectIDs[1]
-    //    console.log(objectToRender);
-    //     })
-    .then(data => fetchedIdArray = data) //assign json data to variable
- })
+    .then(res => res.json())
+    .then(function(data) {
+        let objectIDArray = data.objectIDs;
+        //console.log(objectIDArray)
+        //console.log(objectIDArray[Math.floor(Math.random()* objectIDArray.length)])
+        let randomlyGeneratedObjId = objectIDArray[Math.floor(Math.random()* objectIDArray.length)]
+        
+       return fetch(metIAObjectUrl + randomlyGeneratedObjId)
+        .then(res => res.json())
+        //.then(console.log)
+        .then(function(data){
+            let artPieceImg = data.primaryImage;
+            let artPieceTitle = data.title;
+            let artPieceDate = data.objectDate
+            console.log(artPieceImg, artPieceTitle, artPieceDate) 
+        })
+       //select random bunch from array
+        //  
+    })
+ }
 
-return GetObjectIdFromSearch(metIADoggoUrl);
 
-console.log(fetchedIdArray.objectIDs)
+ 
+getObjectIdFromSearch(metIADoggoUrl);
 
-// const randomValue = (array) => {
-//     return array[Math.floor(Math.random() * list.length)];
-// };
+
+
+
+//   .catch(function(error) {
+//     console.log('Error!', error)
+//   })
+
+
+
+// function randomValue(arr) {
+//     arr[Math.floor(Math.random()* objectIDArray.length)]
+// }
