@@ -24,18 +24,23 @@ function getObjectIdFromSearch(url) {
         .then(res => res.json())
         //.then(console.log)
         .then(function(data){
-            let artPieceImg = data.primaryImage;
+            let artPieceImg = data.primaryImageSmall;
             let artPieceTitle = data.title;
             let artPieceDate = data.objectDate
-            console.log(artPieceImg, artPieceTitle, artPieceDate) 
+            //console.log(artPieceImg, artPieceTitle, artPieceDate) 
+            log(artPieceDate)
+            log(artPieceImg)
+            log(artPieceTitle)
         })
        //select random bunch from array
         //  
     })
  }
 
+function log(input){
+    console.log(input)
+}
 
- 
 getObjectIdFromSearch(metIADoggoUrl);
 
 
