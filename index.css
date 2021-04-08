@@ -1,3 +1,10 @@
 h3 {
     text-decoration: underline;
 }
+
+body {
+    background-color: aquamarine;
+    text-align: center;
+    border: 20px slategray;
+}
+
