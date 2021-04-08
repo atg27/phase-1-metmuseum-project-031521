@@ -21,6 +21,9 @@ function getObjectIdFromSearch(url) {
         
         getArt(randomlyGeneratedObjId)
     })
+    .catch(error => {
+        console.log('Error!', error)
+      })
  }
 
 
@@ -41,7 +44,6 @@ function getArt(objectId){
     })
     .catch(error => {
         console.log('Error!', error)
-
       })
 }
 
