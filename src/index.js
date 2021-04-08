@@ -1,8 +1,10 @@
 
 // url for "dog" keyword search in IA dept. Returns object: { total results = # , objectIDs = [array of individual object ids] } 
 const metIADoggoUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=14&q=dog"   
-
- // truncated url for search by keyword in IA dept -Can add keywork to end
+const metIACatUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=14&q=cat"
+const metIAFoodUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=14&q=food"
+const metIABuildingUrl = "https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=14&q=building"
+// truncated url for search by keyword in IA dept -Can add keywork to end
 const metIArtTopicUrl ="https://collectionapi.metmuseum.org/public/collection/v1/search?departmentId=14&q="  
 
 // truncated url for specific art piece object -Can add objectID at end
@@ -60,6 +62,10 @@ function getArt(objectId){
         const artContainer = document.querySelector("div")
         renderArt(data)
     })
+    .catch(error => {
+        console.log('Error!', error)
+        
+      })
 }
 
 function renderArt(artPiece){
