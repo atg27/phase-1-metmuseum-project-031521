@@ -59,26 +59,24 @@ function getArt(objectId){
         log(artPieceTitle)
         const artContainer = document.querySelector("div")
         renderArt(data)
-        
-    
     })
 }
 
 function renderArt(artPiece){
         const artContainer = document.querySelector("div")
-        let h2 = document.createElement('h2')
-        h2.innerText = artPiece.title
+        let h3 = document.createElement('h2')
+        h3.innerText = "TITLE: " + artPiece.title
       
         let img = document.createElement('img')
         img.setAttribute('src', artPiece.primaryImageSmall)
       
         let p = document.createElement('p')
-        p.innerText = artPiece.objectDate
+        p.innerText = "DATE: " + artPiece.objectDate
       
-        artContainer.append(h2,img, p)
+        artContainer.innerHTML = ""
+        artContainer.append(h3,img, p)
     
 }
-
 
 function log(input){
     console.log(input)

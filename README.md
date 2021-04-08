@@ -4,4 +4,3 @@ This project utilizes the Met Museum API to display art on a SPA. The SPA displa
 
 
 
-// add multiple buttons to render art on one div
