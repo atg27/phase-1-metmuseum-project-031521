@@ -59,5 +59,4 @@ function log(input){
     console.log(input)
 }
 
-//getObjectIdFromSearch(metIAIslam);
 
